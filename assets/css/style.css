@@ -26,6 +26,7 @@ h3 {
     margin-top: 15px;
 }
 
+/* Search Container */
 .search-cont{
     margin-left: -25px;
     margin-right: 10px;
@@ -35,14 +36,6 @@ h3 {
     margin: 6% 0;
 }
 
-.details {
-    padding: 1% 0;
-}
-
-.future {
-    margin-top: 20px;
-    width: 108%;
-}
 
 .searchbtn {
     margin-bottom: 8%;
@@ -72,19 +65,29 @@ button {
     padding: 5% 0;
 }
 
+/* forecast */
 .current {
     display: flex;
     align-items: flex-end;
     border: solid black;
     margin-right: -45px;
     border-radius: 5px;
-    padding: 2% 0 1% 0;
+    padding: 2% 0 0 0;
 }
 
 .forecast {
     margin-left: 1%;
 }
 
+.details {
+    padding: 1% 0;
+}
+
+/* 5day forecast */
+.future {
+    margin-top: 20px;
+    width: 108%;
+}
 
 .futureFC {
     border: solid black;
@@ -93,7 +96,79 @@ button {
 }
 
 .futureFC .details {
-    padding-top: 10%;
+    padding: 20% 0 10% 0;
+}
+
+.futureFC p {
+    padding: 5% 0;
+}
+
+/* icons */
+.futureFC i {
+    padding: 7% 0;
+}
+
+.fa-cloud {
+    color: #cdedf8;
+    border-radius: 25px;
+    top: 70%;
+    left: 50%;
+    width: 150px;
+    font-size: 50px;
+}
+
+.fa-sun {
+    color: #ffce42;
+    font-size: 30px;
+}
+
+.fa-cloud-sun {
+    font-size: 30px;
+}
+
+.fa-cloud-sun-rain {
+    font-size: 30px;
+}
+
+/* UV Index */
+.greenI { /* 0 - 2 favorable*/
+    background-color: green;
+    color: #fff;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+    border: solid green;
+}
+
+.yellowI { /* 3 - 5 moderate*/
+    background-color: yellow;
+    color: black;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+    border: solid yellow;
+}
+
+.orangeI { /* 6 - 7 high*/
+    background-color: orange;
+    color: black;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+    border: solid orange;
+}
+
+.redI { /* 8 - 10 severe*/
+    background-color: red;
+    color: #fff;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+    border: solid red;
+}
+
+.purpleI { /* 11+ purple */
+    background-color: purple;
+    color: #fff;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+    border: solid purple;
 }
 
 /* font-family: 'Nunito', sans-serif; */
