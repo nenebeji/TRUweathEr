@@ -1,0 +1,100 @@
+
+body {
+    font-family: 'PT-Sans', sans-serif;
+    line-height: 1;
+}
+
+p {
+    padding: 1% 0;
+    font-size: 1.2rem;
+}
+
+h3 {
+    margin: 5% 0;
+}
+
+.jumbotron {
+    text-align: center;
+    text-shadow: #4B0082;
+    background-color: #4B0082;
+    background-image: linear-gradient(to right, #4B0082 , #900C3F , yellow);
+    color: #fff;
+    border-radius: 0;
+}
+
+.main-cont {
+    margin-top: 15px;
+}
+
+.search-cont{
+    margin-left: -25px;
+    margin-right: 10px;
+}
+
+.input-group {
+    margin: 6% 0;
+}
+
+.details {
+    padding: 1% 0;
+}
+
+.future {
+    margin-top: 20px;
+    width: 108%;
+}
+
+.searchbtn {
+    margin-bottom: 8%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    width: 100%;
+}
+
+.btnhistory {
+    margin: 5% 0;
+}
+
+.btn:hover {
+    box-shadow: 0 0.3rem 1.3rem 0 #6791f1e3;
+    color: white;
+}
+
+.search-history {
+    border-top: solid black;
+    width: 99%;
+    margin: 0 0.1%;
+    padding: 5% 0;
+}
+
+.current {
+    display: flex;
+    align-items: flex-end;
+    border: solid black;
+    margin-right: -45px;
+    border-radius: 5px;
+    padding: 2% 0 1% 0;
+}
+
+.forecast {
+    margin-left: 1%;
+}
+
+
+.futureFC {
+    border: solid black;
+    border-radius: 5px;
+    margin: 1% 1%;
+}
+
+.futureFC .details {
+    padding-top: 10%;
+}
+
+/* font-family: 'Nunito', sans-serif; */
+/* font-family: 'PT-Sans', sans-serif; */
