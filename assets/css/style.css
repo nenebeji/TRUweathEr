@@ -69,11 +69,13 @@ button {
 .current {
     display: flex;
     align-items: flex-end;
-    border: solid black;
+    border: solid #050A30;
     margin-right: -45px;
     border-radius: 5px;
     padding: 2% 0 0 0;
+    width: 108%;
 }
+
 
 .forecast {
     margin-left: 1%;
@@ -86,13 +88,16 @@ button {
 /* 5day forecast */
 .future {
     margin-top: 20px;
+    padding-top: 5px;
     width: 108%;
+    background-color: #cdedf8;
 }
 
 .futureFC {
-    border: solid black;
+    border: solid #050A30;
     border-radius: 5px;
     margin: 1% 1%;
+    background-color: #fff;
 }
 
 .futureFC .details {
@@ -169,6 +174,13 @@ button {
     padding: 0.5% 2%;
     border-radius: 3px;
     border: solid purple;
+}
+
+/* mode */
+.nighttime {
+    background-color: #050A30;
+    background-image: linear-gradient(to right, #050A30 , #000C66);
+    color: #fff;
 }
 
 /* font-family: 'Nunito', sans-serif; */
