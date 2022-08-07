@@ -1,5 +1,6 @@
 # TRUweathEr 
 
+![screencapture-file-Users-nenebeji-Documents-bootcamp-challenges-TRUweathEr-index-html-2022-08-07-18_39_23](https://user-images.githubusercontent.com/105363883/183303948-c9ae72f8-376c-46b7-b3bf-2ffacc5ebf3f.png)
 
 >  Let's See the Weather
 
@@ -36,5 +37,6 @@ This application allows the user to view the current and future weather forecast
 
 ## References
 URL for application:
+
 
 
