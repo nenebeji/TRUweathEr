@@ -32,32 +32,50 @@ function displayforecast(data) {
     city.text(data.city.name);
     // current forecast
     console.log(data.list[0]);
+    var icontoday = document.createElement("img")
+    icontoday.src = 'http://openweathermap.org/img/wn/'+data.list[0].weather[0].icon+'@2x.png'
+    $('#todayicon').html(icontoday);
     $('#daytemp').text(data.list[0].main.temp);
     $('#daywind').text(data.list[0].wind.speed);
     $('#dayhumidity').text(data.list[0].main.humidity);
 
     // +1 day forecast
     console.log(data.list[8]);
+    var icon1 = document.createElement("img")
+    icon1.src = 'http://openweathermap.org/img/wn/'+data.list[8].weather[0].icon+'@2x.png'
+    $('#icon1').html(icon1);
     $('#temp1').text(data.list[8].main.temp);
     $('#wind1').text(data.list[8].wind.speed);
     $('#humidity1').text(data.list[8].main.humidity);
     // +2 day forecast
     console.log(data.list[16]);
+    var icon2 = document.createElement("img")
+    icon2.src = 'http://openweathermap.org/img/wn/'+data.list[16].weather[0].icon+'@2x.png'
+    $('#icon2').html(icon2);
     $('#temp2').text(data.list[16].main.temp);
     $('#wind2').text(data.list[16].wind.speed);
     $('#humidity2').text(data.list[16].main.humidity);
     // +3 day forecast
     console.log(data.list[24]);
+    var icon3 = document.createElement("img")
+    icon3.src = 'http://openweathermap.org/img/wn/'+data.list[24].weather[0].icon+'@2x.png'
+    $('#icon3').html(icon3);
     $('#temp3').text(data.list[24].main.temp);
     $('#wind3').text(data.list[24].wind.speed);
     $('#humidity3').text(data.list[24].main.humidity);
    // +4 day forecast
    console.log(data.list[32]);
+   var icon4 = document.createElement("img")
+   icon4.src = 'http://openweathermap.org/img/wn/'+data.list[32].weather[0].icon+'@2x.png'
+   $('#icon4').html(icon4);
    $('#temp4').text(data.list[32].main.temp);
    $('#wind4').text(data.list[32].wind.speed);
    $('#humidity4').text(data.list[32].main.humidity);
    // +5 day forecast
    console.log(data.list[39]);
+   var icon5 = document.createElement("img")
+   icon5.src = 'http://openweathermap.org/img/wn/'+data.list[39].weather[0].icon+'@2x.png'
+   $('#icon5').html(icon5);
    $('#temp5').text(data.list[39].main.temp);
    $('#wind5').text(data.list[39].wind.speed);
    $('#humidity5').text(data.list[39].main.humidity);

@@ -78,7 +78,6 @@ button {
     border: solid #050A30;
     margin-right: -45px;
     border-radius: 5px;
-    padding: 2% 0 0 0;
     width: 108%;
 }
 
@@ -92,17 +91,18 @@ button {
 }
 
 .details {
-    padding: 1% 0;
+    margin-top: -3%;
 }
 
 /* 5day forecast */
 .future {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin: 20px 0;
     padding-top: 5px;
     width: 108%;
     background-color: #cdedf8;
+    margin-left: -10px;
 }
 
 .futureFC {
@@ -122,31 +122,10 @@ button {
 }
 
 /* icons */
-.futureFC i {
+.futureFC .icons {
     padding: 7% 0;
 }
 
-.fa-cloud {
-    color: #cdedf8;
-    border-radius: 25px;
-    top: 70%;
-    left: 50%;
-    width: 150px;
-    font-size: 50px;
-}
-
-.fa-sun {
-    color: #ffce42;
-    font-size: 30px;
-}
-
-.fa-cloud-sun {
-    font-size: 30px;
-}
-
-.fa-cloud-sun-rain {
-    font-size: 30px;
-}
 
 /* UV Index */
 .greenI { /* 0 - 2 favorable*/
