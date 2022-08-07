@@ -43,7 +43,7 @@ searchbtn.on('click', handleFormSubmit);
 function fetchforecast(city) {
     //city = 'London'
     var APIkey = '9ab17c4002c412673ac783a9c0da3a9e';
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + APIkey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + APIkey;
     fetch(queryURL)
     .then(function (response) {
         if(response.ok) {
@@ -108,7 +108,7 @@ function displayforecast(data) {
     city.text(data.city.name);
     // current forecast
     var icontoday = document.createElement("img")
-    icontoday.src = 'http://openweathermap.org/img/wn/'+data.list[0].weather[0].icon+'@2x.png'
+    icontoday.src = 'https://openweathermap.org/img/wn/'+data.list[0].weather[0].icon+'@2x.png'
     $('#todayicon').html(icontoday);
     $('#daytemp').text(data.list[0].main.temp);
     $('#daywind').text(data.list[0].wind.speed);
@@ -116,7 +116,7 @@ function displayforecast(data) {
 
     // +1 day forecast
     var icon1 = document.createElement("img")
-    icon1.src = 'http://openweathermap.org/img/wn/'+data.list[8].weather[0].icon+'@2x.png'
+    icon1.src = 'https://openweathermap.org/img/wn/'+data.list[8].weather[0].icon+'@2x.png'
     $('#icon1').html(icon1);
     $('#temp1').text(data.list[8].main.temp);
     $('#wind1').text(data.list[8].wind.speed);
@@ -124,7 +124,7 @@ function displayforecast(data) {
 
     // +2 day forecast
     var icon2 = document.createElement("img")
-    icon2.src = 'http://openweathermap.org/img/wn/'+data.list[16].weather[0].icon+'@2x.png'
+    icon2.src = 'https://openweathermap.org/img/wn/'+data.list[16].weather[0].icon+'@2x.png'
     $('#icon2').html(icon2);
     $('#temp2').text(data.list[16].main.temp);
     $('#wind2').text(data.list[16].wind.speed);
@@ -132,7 +132,7 @@ function displayforecast(data) {
 
     // +3 day forecast
     var icon3 = document.createElement("img")
-    icon3.src = 'http://openweathermap.org/img/wn/'+data.list[24].weather[0].icon+'@2x.png'
+    icon3.src = 'https://openweathermap.org/img/wn/'+data.list[24].weather[0].icon+'@2x.png'
     $('#icon3').html(icon3);
     $('#temp3').text(data.list[24].main.temp);
     $('#wind3').text(data.list[24].wind.speed);
@@ -140,7 +140,7 @@ function displayforecast(data) {
 
    // +4 day forecast
    var icon4 = document.createElement("img")
-   icon4.src = 'http://openweathermap.org/img/wn/'+data.list[32].weather[0].icon+'@2x.png'
+   icon4.src = 'https://openweathermap.org/img/wn/'+data.list[32].weather[0].icon+'@2x.png'
    $('#icon4').html(icon4);
    $('#temp4').text(data.list[32].main.temp);
    $('#wind4').text(data.list[32].wind.speed);
@@ -148,7 +148,7 @@ function displayforecast(data) {
 
    // +5 day forecast
    var icon5 = document.createElement("img")
-   icon5.src = 'http://openweathermap.org/img/wn/'+data.list[39].weather[0].icon+'@2x.png'
+   icon5.src = 'https://openweathermap.org/img/wn/'+data.list[39].weather[0].icon+'@2x.png'
    $('#icon5').html(icon5);
    $('#temp5').text(data.list[39].main.temp);
    $('#wind5').text(data.list[39].wind.speed);
