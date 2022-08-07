@@ -136,6 +136,17 @@ button {
     padding: 7% 0;
 }
 
+.fa-solid{
+    font-size: 2.5rem;
+}
+
+.futureFC .fa-solid {
+    padding: 7% 0;
+}
+
+.current .fa-solid {
+    padding: 2% 0;
+}
 
 /* UV Index */
 
