@@ -1,13 +1,33 @@
 var city = $('#city');
 var searchinput = $('#citysearch');
+var searchform = $('#search-form');
+var searchhistory = $('#searchhistory');
 var searchbtn = $('#searchbtn');
 var UVIndex = $('#dayindex');
 
 city;
 
+// handle submit
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    fetchforecast(searchinput.val());
+
+    var searchhistItem = searchinput.val();
+
+    searchhistory.prepend('<li>' + '<button class="btn btn-secondary">' + searchhistItem + '</button>' + '</li>');
+
+    searchinput.val('');
+
+}
+
+//event listener to subbit
+
+searchbtn.on('click', handleFormSubmit);
+
 // fetch url
 function fetchforecast(city) {
-    city = 'london';
+    //city = 'London'
     var APIkey = '9ab17c4002c412673ac783a9c0da3a9e';
     var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + APIkey;
     fetch(queryURL)
@@ -34,16 +54,19 @@ function fetchforecast(city) {
         if(response.ok) {
             response.json().then(function(data){
                 UVIndex.text(data.current.uvi);
-                if(data.current.uvi === 0 || data.current.uvi < 2 || data.current.uvi === 2) {
+                if(data.current.uvi === 0) {
+                    $(UVIndex).addClass('greyI');
+                }
+                else if(data.current.uvi > 0 && data.current.uvi <= 2.5) {
                     $(UVIndex).addClass('greenI');
                 }
-                else if (data.current.uvi > 2 || data.current.uvi === 5) {
+                else if (data.current.uvi >= 2.6 && data.current.uvi <= 5.5) {
                     $(UVIndex).addClass('yellowI');
                 }
-                else if (data.current.uvi > 5 || data.current.uvi === 7) {
+                else if (data.current.uvi >= 5.6 && data.current.uvi <= 7.5) {
                     $(UVIndex).addClass('orangeI');
                 }
-                else if (data.current.uvi > 7 || data.current.uvi === 10) {
+                else if (data.current.uvi >= 7.6 && data.current.uvi <= 10.5) {
                     $(UVIndex).addClass('redI');
                 }
                 else {
@@ -57,7 +80,8 @@ function fetchforecast(city) {
     })
    }
 };
-fetchforecast();
+
+//fetchforecast();
 
 function displayforecast(data) {
     city.text(data.city.name);
@@ -119,13 +143,7 @@ $('#plus3').text(moment().add(3, 'days').format('DD/MM/YYYY'));
 $('#plus4').text(moment().add(4, 'days').format('DD/MM/YYYY'));
 $('#plus5').text(moment().add(5, 'days').format('DD/MM/YYYY'));
 
-// city.text('London'); set text content
-
-console.log(moment().format('DD/MM/YYYY'));
-console.log(moment().add(1, 'day').format('DD/MM/YYYY'));
-
 // set night theme
-console.log(moment().hour())
 
 if (moment().hour() >= 19 || moment().hour() <= 2 ) {
     $('#current').addClass('nighttime');
