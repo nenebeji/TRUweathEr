@@ -1,6 +1,7 @@
 var city = $('#city');
 var searchinput = $('#citysearch');
 var searchbtn = $('#searchbtn');
+var UVIndex = $('#dayindex');
 
 city;
 
@@ -13,8 +14,8 @@ function fetchforecast(city) {
     .then(function (response) {
         if(response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 displayforecast(data);
+                fetchUVI(data);
             })
         }
         else{
@@ -24,14 +25,43 @@ function fetchforecast(city) {
     .catch(function (error) {
         alert('Unable to connect to openweathermap');
     });
+
+    // get UV Index
+   function fetchUVI(data) {
+    var UVIurl = "https://api.openweathermap.org/data/3.0/onecall?lat="+data.city.coord.lat+"&lon="+data.city.coord.lon+"&units=metric&exclude=minutely,hourly,daily,alerts&appid="+APIkey;
+    fetch(UVIurl)
+    .then(function(response){
+        if(response.ok) {
+            response.json().then(function(data){
+                UVIndex.text(data.current.uvi);
+                if(data.current.uvi === 0 || data.current.uvi < 2 || data.current.uvi === 2) {
+                    $(UVIndex).addClass('greenI');
+                }
+                else if (data.current.uvi > 2 || data.current.uvi === 5) {
+                    $(UVIndex).addClass('yellowI');
+                }
+                else if (data.current.uvi > 5 || data.current.uvi === 7) {
+                    $(UVIndex).addClass('orangeI');
+                }
+                else if (data.current.uvi > 7 || data.current.uvi === 10) {
+                    $(UVIndex).addClass('redI');
+                }
+                else {
+                    $(UVIndex).addClass('purpleI');
+                }
+            })
+        }
+        else{
+            alert('Error: ' + response.statusText);
+        }
+    })
+   }
 };
 fetchforecast();
 
 function displayforecast(data) {
-    console.log(data);
     city.text(data.city.name);
     // current forecast
-    console.log(data.list[0]);
     var icontoday = document.createElement("img")
     icontoday.src = 'http://openweathermap.org/img/wn/'+data.list[0].weather[0].icon+'@2x.png'
     $('#todayicon').html(icontoday);
@@ -40,39 +70,38 @@ function displayforecast(data) {
     $('#dayhumidity').text(data.list[0].main.humidity);
 
     // +1 day forecast
-    console.log(data.list[8]);
     var icon1 = document.createElement("img")
     icon1.src = 'http://openweathermap.org/img/wn/'+data.list[8].weather[0].icon+'@2x.png'
     $('#icon1').html(icon1);
     $('#temp1').text(data.list[8].main.temp);
     $('#wind1').text(data.list[8].wind.speed);
     $('#humidity1').text(data.list[8].main.humidity);
+
     // +2 day forecast
-    console.log(data.list[16]);
     var icon2 = document.createElement("img")
     icon2.src = 'http://openweathermap.org/img/wn/'+data.list[16].weather[0].icon+'@2x.png'
     $('#icon2').html(icon2);
     $('#temp2').text(data.list[16].main.temp);
     $('#wind2').text(data.list[16].wind.speed);
     $('#humidity2').text(data.list[16].main.humidity);
+
     // +3 day forecast
-    console.log(data.list[24]);
     var icon3 = document.createElement("img")
     icon3.src = 'http://openweathermap.org/img/wn/'+data.list[24].weather[0].icon+'@2x.png'
     $('#icon3').html(icon3);
     $('#temp3').text(data.list[24].main.temp);
     $('#wind3').text(data.list[24].wind.speed);
     $('#humidity3').text(data.list[24].main.humidity);
+
    // +4 day forecast
-   console.log(data.list[32]);
    var icon4 = document.createElement("img")
    icon4.src = 'http://openweathermap.org/img/wn/'+data.list[32].weather[0].icon+'@2x.png'
    $('#icon4').html(icon4);
    $('#temp4').text(data.list[32].main.temp);
    $('#wind4').text(data.list[32].wind.speed);
    $('#humidity4').text(data.list[32].main.humidity);
+
    // +5 day forecast
-   console.log(data.list[39]);
    var icon5 = document.createElement("img")
    icon5.src = 'http://openweathermap.org/img/wn/'+data.list[39].weather[0].icon+'@2x.png'
    $('#icon5').html(icon5);
@@ -80,8 +109,6 @@ function displayforecast(data) {
    $('#wind5').text(data.list[39].wind.speed);
    $('#humidity5').text(data.list[39].main.humidity);
 }
-
-
 
 
 // set dates
@@ -96,3 +123,13 @@ $('#plus5').text(moment().add(5, 'days').format('DD/MM/YYYY'));
 
 console.log(moment().format('DD/MM/YYYY'));
 console.log(moment().add(1, 'day').format('DD/MM/YYYY'));
+
+// set night theme
+console.log(moment().hour())
+
+if (moment().hour() >= 19 || moment().hour() <= 2 ) {
+    $('#current').addClass('nighttime');
+}
+else {
+    $('#current').removeClass('nighttime');
+}
