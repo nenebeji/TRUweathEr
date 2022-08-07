@@ -7,7 +7,7 @@ var UVIndex = $('#dayindex');
 
 city;
 
-// handle submit
+// handle submit of searched city
 function handleFormSubmit(event) {
     event.preventDefault();
 
@@ -15,14 +15,28 @@ function handleFormSubmit(event) {
 
     var searchhistItem = searchinput.val();
 
-    searchhistory.prepend('<li>' + '<button class="btn btn-secondary">' + searchhistItem + '</button>' + '</li>');
+    searchhistory.prepend('<li>' + '<button class="btn btn-secondary" id="select" data-name="'+searchhistItem+'">' + searchhistItem + '</button>' + '</li>');
+
+    if($('.historyList').length > 5) {
+        $('.historyList').splice(5);
+    }
 
     searchinput.val('');
-
+    
+    $('#select').on('click', historyClickHandler);
 }
 
-//event listener to subbit
+// handle history click
+function historyClickHandler(event) {
+    var searchedcity = event.target.getAttribute('data-name');
+  
+    if (searchedcity) {
+      fetchforecast(searchedcity);
 
+    }
+};
+
+//event listener
 searchbtn.on('click', handleFormSubmit);
 
 // fetch url
@@ -45,6 +59,7 @@ function fetchforecast(city) {
     .catch(function (error) {
         alert('Unable to connect to openweathermap');
     });
+    
 
     // get UV Index
    function fetchUVI(data) {
@@ -55,21 +70,27 @@ function fetchforecast(city) {
             response.json().then(function(data){
                 UVIndex.text(data.current.uvi);
                 if(data.current.uvi === 0) {
+                    $(UVIndex).removeClass();
                     $(UVIndex).addClass('greyI');
                 }
-                else if(data.current.uvi > 0 && data.current.uvi <= 2.5) {
+                else if(data.current.uvi > 0 && data.current.uvi <= 2.59) {
+                    $(UVIndex).removeClass();
                     $(UVIndex).addClass('greenI');
                 }
-                else if (data.current.uvi >= 2.6 && data.current.uvi <= 5.5) {
+                else if (data.current.uvi >= 2.6 && data.current.uvi <= 5.59) {
+                    $(UVIndex).removeClass();
                     $(UVIndex).addClass('yellowI');
                 }
-                else if (data.current.uvi >= 5.6 && data.current.uvi <= 7.5) {
+                else if (data.current.uvi >= 5.6 && data.current.uvi <= 7.59) {
+                    $(UVIndex).removeClass();
                     $(UVIndex).addClass('orangeI');
                 }
-                else if (data.current.uvi >= 7.6 && data.current.uvi <= 10.5) {
+                else if (data.current.uvi >= 7.6 && data.current.uvi <= 10.59) {
+                    $(UVIndex).removeClass();
                     $(UVIndex).addClass('redI');
                 }
-                else {
+                else if(data.current.uvi >= 10.6) {
+                    $(UVIndex).removeClass();
                     $(UVIndex).addClass('purpleI');
                 }
             })
